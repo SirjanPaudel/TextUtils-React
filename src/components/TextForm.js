@@ -75,18 +75,19 @@ export default function TextForm(props) {
             <h1>{props.EnterText}</h1>
 
             <div className="mb-5">
-                <textarea className={`form-control mb-3 bg-${props.mode==='dark'?"dark":'light'} rows=8 text-${props.mode==='dark'?"light":'dark'}`} id="myBox" value={formText} onChange={handleOnChange}></textarea>
-
+                <textarea rows={8} className={`form-control rows=8 mb-3 bg-${props.mode==='dark'?"dark":'light' } text-${props.mode==='dark'?"light":'dark'}`} id="myBox" value={formText} onChange={handleOnChange}></textarea>
+                <div className="container">
                 <button type="button" className="btn btn-primary" onClick={handleUpClick}>{props.btnOfForm}</button>
-                <button type="button" className="btn btn-primary mx-2" onClick={handleLoClick}>{props.btnOfForm2}</button>
-                <button type="button" className="btn btn-primary mx-2" onClick={handleClear}>{props.btnOfForm3}</button>
-                <button type="button" className="btn btn-primary mx-2" onClick={handleCopy}>{props.btnOfForm4}</button>
-                <button type="button" className="btn btn-primary mx-2" onClick={handleSpaces}>{props.btnOfForm5}</button>
+                <button type="button" className="btn btn-primary my-2 mx-2" onClick={handleLoClick}>{props.btnOfForm2}</button>
+                <button type="button" className="btn btn-primary my-2 mx-2" onClick={handleClear}>{props.btnOfForm3}</button>
+                <button type="button" className="btn btn-primary my-2 mx-2" onClick={handleCopy}>{props.btnOfForm4}</button>
+                <button type="button" className="btn btn-primary my-2 mx-2" onClick={handleSpaces}>{props.btnOfForm5}</button>
+            </div>
             </div>
             <div>
                 <h1>Your data</h1>
                 <p>{formText}</p>
-                <h2>Your Word Count is <span>{formText.split(" ").length - 1}</span> and the characters count is {formText.length}</h2>
+                <h2>Your Word Count is <span>{formText.split(" ").filter((element)=>{return element.length !==0}).length}</span> and the characters count is {formText.length}</h2>
             </div>
         </>
     );

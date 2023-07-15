@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 export default function TextForm(props) {
-    const [formText, setFromData] = useState("Replace with your text");
+    const [formText, setFromData] = useState("");
     const handleUpClick = () => {
         if(formText!=="")
         {
@@ -71,9 +71,7 @@ export default function TextForm(props) {
     
     return (
         <>
-
             <h1>{props.EnterText}</h1>
-
             <div className="mb-5">
                 <textarea rows={8} className={`form-control rows=8 mb-3 bg-${props.mode==='dark'?"dark":'light' } text-${props.mode==='dark'?"light":'dark'}`} id="myBox" value={formText} onChange={handleOnChange}></textarea>
                 <div className="container">
@@ -85,9 +83,9 @@ export default function TextForm(props) {
             </div>
             </div>
             <div>
-                <h1>Your data</h1>
+                <h1>{formText.length>0?"Preview":''}</h1>
                 <p>{formText}</p>
-                <h2>Your Word Count is <span>{formText.split(" ").filter((element)=>{return element.length !==0}).length}</span> and the characters count is {formText.length}</h2>
+                <h2>{formText.length>0?`Your Word Count is ${formText.split(" ").filter((element)=>{return element.length !==0}).length}`:""} {formText.length>0?`and the characters count is ${formText.length}`:""}</h2>
             </div>
         </>
     );
